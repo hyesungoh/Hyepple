@@ -7,6 +7,26 @@ Hyepple </h1>
 <p>Apple clone coding</p>
 </div>
 
+<div align="center">
+  <a href="#what-i-learn">What I learn</a> •
+  <a href="#using">Using</a>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## Using
+
+-   Vanilla JS
+
 ## What I learn
 
 #### Css not pseudo element
