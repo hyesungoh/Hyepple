@@ -29,3 +29,10 @@ Hyepple </h1>
     font-size: 12px;
 }
 ```
+
+#### window can ignore
+
+```js
+console.log(innerHeight);
+console.log(window.innerHeight); // 같다
+```
