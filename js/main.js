@@ -2,6 +2,7 @@
     let yOffset = 0; // pageYOffset
     let prevScrollHeight = 0;
     let currentScene = 0;
+    let enterNewScene = false;
 
     const sceneInfo = [
         {
@@ -10,16 +11,16 @@
             scrollHeight: 0,
             objs: {
                 container: document.querySelector("#scroll-section-0"),
-                msessageA: document.querySelector(
+                messageA: document.querySelector(
                     "#scroll-section-0 .main-message.a"
                 ),
-                msessageB: document.querySelector(
+                messageB: document.querySelector(
                     "#scroll-section-0 .main-message.b"
                 ),
-                msessageC: document.querySelector(
+                messageC: document.querySelector(
                     "#scroll-section-0 .main-message.c"
                 ),
-                msessageD: document.querySelector(
+                messageD: document.querySelector(
                     "#scroll-section-0 .main-message.d"
                 ),
             },
@@ -77,10 +78,27 @@
         document.body.setAttribute("id", `show-scene-${currentScene}`);
     };
 
+    const calcValues = (values, currentYOffset) => {
+        let rv;
+        // 현재 Scene에서 스크롤된 범위 비율
+        let scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight;
+        rv = scrollRatio * (values[1] - values[0]) + values[0];
+        return rv;
+    };
+
     const playAnimation = () => {
+        const objs = sceneInfo[currentScene].objs;
+        const values = sceneInfo[currentScene].values;
+        const currentYOffset = yOffset - prevScrollHeight;
+
         switch (currentScene) {
             case 0:
-                console.log("0 play");
+                let messageA_opacity_in = calcValues(
+                    values.messageA_opacity,
+                    currentYOffset
+                );
+
+                objs.messageA.style.opacity = messageA_opacity_in;
                 break;
             case 1:
                 break;
@@ -92,6 +110,7 @@
     };
 
     const scrollLoop = () => {
+        enterNewScene = false;
         prevScrollHeight = 0;
         for (let i = 0; i < currentScene; i++) {
             prevScrollHeight += sceneInfo[i].scrollHeight;
@@ -99,15 +118,18 @@
 
         if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
             currentScene++;
+            enterNewScene = true;
             document.body.setAttribute("id", `show-scene-${currentScene}`);
         }
 
         if (yOffset < prevScrollHeight) {
             if (currentScene === 0) return;
             currentScene--;
+            enterNewScene = true;
             document.body.setAttribute("id", `show-scene-${currentScene}`);
         }
 
+        if (enterNewScene) return;
         playAnimation();
     };
 
