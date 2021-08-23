@@ -36,3 +36,13 @@ Hyepple </h1>
 console.log(innerHeight);
 console.log(window.innerHeight); // 같다
 ```
+
+#### checking Load
+
+```js
+// DOM, 이미지등 모든 것이 load 되었을 때
+window.addEventListener("load", setLayout);
+
+// DOM만이 로드 완료되었을 때
+window.addEventListener("DOMContentLoaded", setLayout);
+```
