@@ -10,8 +10,8 @@ Hyepple </h1>
 </div>
 
 <div align="center">
-  <a href="#what-i-learn">What I learn</a> •
-  <a href="#using">Using</a>
+  <a href="#using">Using</a> •
+  <a href="#what-i-learn">What I learn</a>
 </div>
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
