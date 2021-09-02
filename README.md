@@ -46,3 +46,7 @@ window.addEventListener("load", setLayout);
 // DOM만이 로드 완료되었을 때
 window.addEventListener("DOMContentLoaded", setLayout);
 ```
+
+#### translateXYZ vs translate3d
+
+`translate3d`의 경우 **하드웨어 가속이 보장**되기 때문에, 애플의 경우 3d 이동이 아니더라도 사용하고 있다.
