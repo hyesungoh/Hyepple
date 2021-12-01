@@ -18,7 +18,7 @@ Hyepple </h1>
 
 ## Using
 
--   Vanilla JS
+- Vanilla JS
 
 ## What I learn
 
@@ -26,7 +26,7 @@ Hyepple </h1>
 
 ```css
 .className:not(.doNotThis) {
-    font-size: 12px;
+  font-size: 12px;
 }
 ```
 
@@ -72,17 +72,16 @@ const videoElem = document.querySelector(".sample-video");
 let progress;
 let currentFrame;
 function init() {
-    document.body.classList.remove("before-load");
+  document.body.classList.remove("before-load");
 
-    window.addEventListener("scroll", function () {
-        progress =
-            pageYOffset / (document.body.offsetHeight - window.innerHeight);
-        console.log(progress);
-        if (progress < 0) progress = 0;
-        if (progress > 1) progress = 1;
+  window.addEventListener("scroll", function () {
+    progress = pageYOffset / (document.body.offsetHeight - window.innerHeight);
+    console.log(progress);
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
 
-        videoElem.currentTime = videoElem.duration * progress;
-    });
+    videoElem.currentTime = videoElem.duration * progress;
+  });
 }
 
 window.addEventListener("load", init);
@@ -105,28 +104,33 @@ let progress;
 let currentFrame;
 
 function setImages() {
-    for (let i = 0; i < totalImagesCount; i++) {
-        let imgElem = new Image();
-        imgElem.src = `../video/002/IMG_${7027 + i}.JPG`;
-        videoImages.push(imgElem);
-    }
+  for (let i = 0; i < totalImagesCount; i++) {
+    let imgElem = new Image();
+    imgElem.src = `../video/002/IMG_${7027 + i}.JPG`;
+    videoImages.push(imgElem);
+  }
 }
 
 function init() {
-    document.body.classList.remove("before-load");
-    context.drawImage(videoImages[0], 0, 0);
+  document.body.classList.remove("before-load");
+  context.drawImage(videoImages[0], 0, 0);
 
-    window.addEventListener("scroll", function () {
-        progress =
-            pageYOffset / (document.body.offsetHeight - window.innerHeight);
-        if (progress < 0) progress = 0;
-        if (progress > 1) progress = 1;
+  window.addEventListener("scroll", function () {
+    progress = pageYOffset / (document.body.offsetHeight - window.innerHeight);
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
 
-        currentFrame = Math.round((totalImagesCount - 1) * progress);
-        context.drawImage(videoImages[currentFrame], 0, 0);
-    });
+    currentFrame = Math.round((totalImagesCount - 1) * progress);
+    context.drawImage(videoImages[currentFrame], 0, 0);
+  });
 }
 
 window.addEventListener("load", init);
 setImages();
 ```
+
+#### Canvas 크기 조작
+
+`Canvas 객체의 width, height 값을 조정하는 방법`, `css를 이용해 transform`하는 방법이 있다.
+
+전자의 방법은 Canvas의 픽셀 수가 달라지는 단점이 있어, 애플은 후자의 방법을 사용한다고 한다.
