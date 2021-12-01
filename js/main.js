@@ -169,6 +169,11 @@
 
     switch (currentScene) {
       case 0:
+        let sequence = Math.round(
+          calcValues(values.imageSequence, currentYOffset)
+        );
+        objs.context.drawImage(objs.videoImages[sequence], 0, 0);
+
         if (scrollRatio <= 0.22) {
           // in
           objs.messageA.style.opacity = calcValues(
@@ -382,4 +387,6 @@
     yOffset = window.pageYOffset;
     scrollLoop();
   });
+
+  setCanvasImages();
 })();
